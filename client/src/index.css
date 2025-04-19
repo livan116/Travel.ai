@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .chat-bubble {
+    @apply p-4 my-2 shadow-sm transition-all duration-200;
+  }
+
+  .chat-bubble .prose {
+    @apply text-current;
+  }
+
+  .chat-bubble .prose h1 {
+    @apply text-xl font-bold mb-4 mt-2 border-b pb-2;
+  }
+
+  .chat-bubble .prose h2 {
+    @apply text-lg font-semibold mb-3 mt-4 text-primary;
+  }
+
+  .chat-bubble .prose ul {
+    @apply mt-2 mb-4 space-y-2;
+  }
+
+  .chat-bubble .prose li {
+    @apply flex items-start gap-2;
+  }
+
+  .chat-bubble .prose li::before {
+    content: "•";
+    @apply text-primary font-bold;
+  }
+
+  .chat-bubble .prose p {
+    @apply mb-3;
+  }
+
+  .user-bubble {
+    @apply bg-primary text-white ml-auto;
+  }
+
+  .ai-bubble {
+    @apply bg-white text-text mr-auto shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+
+  .send-button {
+    @apply bg-primary text-white py-2 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center;
+  }
+
+  .download-button {
+    @apply bg-secondary text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Custom scrollbar */
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+  }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+  }
+
+  /* Message animations */
+  .chat-bubble {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Loading animation */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
